@@ -1,27 +1,21 @@
 const {SlashCommandBuilder} = require('@discordjs/builders');
 const {EmbedBuilder} = require('discord.js');
-const {CommandInteraction, Client} = require('discord.js');
+
 module.exports = {
-  data: new SlashCommandBuilder()
-    .setName('play')
-    .setDescription('Plays a song.')
-    .addStringOption(option => option.setName('query').setDescription('Provide a name or URL').setRequired(true)),
-  /**
-   * @param {CommandInteraction} interaction
-   * @param {Client} client
-   */
+  data: new SlashCommandBuilder().setName('loop').setDescription('Loops the music.'),
   async execute(interaction, client) {
     const {member, guild, channel} = interaction;
-    const VoiceChannel = member.voice.channel;
+    const voiceChannel = member.voice.channel;
+    const queue = await interaction.client.distube.getQueue(voiceChannel);
 
-    if (!VoiceChannel) {
+    if (!voiceChannel) {
       return interaction.reply({
         content: 'You must be in a voice channel to be able to use music commands.',
         ephemeral: true,
       });
     }
 
-    if (guild.members.me.voice.channelId && VoiceChannel.id !== guild.members.me.voice.channelId) {
+    if (guild.members.me.voice.channelId && voiceChannel.id !== guild.members.me.voice.channelId) {
       return interaction.reply({
         content: `I am already playing music in <#${guild.members.me.voice.channelId}>.`,
         ephemeral: true,
@@ -29,12 +23,14 @@ module.exports = {
     }
 
     try {
-      interaction.client.distube.play(VoiceChannel, interaction.options.getString('query'), {
-        textChannel: channel,
-        member: member,
-      });
+      let mode = await interaction.client.distube.setRepeatMode(queue);
+
       return interaction.reply({
-        embeds: [new EmbedBuilder().setColor('#0099ff').setDescription(`☑ **Request received.**`)],
+        embeds: [
+          new EmbedBuilder()
+            .setColor('#0099ff')
+            .setDescription(`🔁 **Repeat Mode is set to: ${(mode = mode ? (mode == 2 ? 'Queue' : 'Song') : 'Off')}**`),
+        ],
       });
     } catch (e) {
       const errorEmbed = new EmbedBuilder().setColor('#ED4245').setDescription(`🔴 Alert: ${e}`);
