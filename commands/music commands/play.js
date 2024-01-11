@@ -13,14 +13,19 @@ module.exports = {
   async execute(interaction, client) {
     const {member, guild, channel} = interaction;
     const VoiceChannel = member.voice.channel;
-
+    //const permissions = VoiceChannel.joinable;
     if (!VoiceChannel) {
       return interaction.reply({
         content: 'You must be in a voice channel to be able to use music commands.',
         ephemeral: true,
       });
     }
-
+    if (!VoiceChannel.joinable) {
+      return interaction.reply({
+        content: `I dont have permission to join this channel.`,
+        ephemeral: true,
+      });
+    }
     if (guild.members.me.voice.channelId && VoiceChannel.id !== guild.members.me.voice.channelId) {
       return interaction.reply({
         content: `I am already playing music in <#${guild.members.me.voice.channelId}>.`,
