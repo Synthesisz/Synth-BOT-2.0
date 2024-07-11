@@ -8,4 +8,12 @@ weather - returns the weather of the specified location
 quote - API that returns a quote from a random anime or you can specify the anime/character  
 
 Music system with youtube/soundcloud/spotify, commands are self explanatory(play,pause,resume,skip,loop,shuffle,autoplay,stop,dc(disconnect))  
-Invite the bot to your server - https://discord.com/api/oauth2/authorize?client_id=914168825111531640&permissions=3156992&scope=bot%20applications.commands
+~~Invite the bot to your server - https://discord.com/api/oauth2/authorize?client_id=914168825111531640&permissions=3156992&scope=bot%20applications.commands~~ Not hosting the bot online any longer
+
+**HOW TO RUN**
+1. Open discord developer portal
+2. Click **New Application**
+3. Copy application ID and paste it in the config.json file
+4. Go to Bot>Reset token>Copy token>paste it in config.json
+5. Go to OAuth2>Scopes>select bot, below that go to bot permissions>select administrator>go to the generated url and add the bot to your server
+6. Install nodejs and dependencies>run the bot(code.js main file)
