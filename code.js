@@ -8,7 +8,7 @@ const {SoundCloudPlugin} = require('@distube/soundcloud');
 const {YtDlpPlugin} = require('@distube/yt-dlp');
 const deployCommands = require('./deployOG.js');
 const DistubeEvents = require('./DistubeEvents.js');
-
+const pathToFfmpeg = require('./node_modules/ffmpeg-static/');
 deployCommands();
 const client = new Client({
   intents: [
@@ -29,6 +29,9 @@ eventHandler(client);
 client.distube = new DisTube(client, {
   emitAddSongWhenCreatingQueue: false,
   leaveOnEmpty: true,
+  ffmpeg: {
+    path: pathToFfmpeg,
+  },
   leaveOnStop: false,
   nsfw: true,
   plugins: [new SpotifyPlugin(), new SoundCloudPlugin(), new YtDlpPlugin()],
