@@ -38,4 +38,4 @@ client.distube = new DisTube(client, {
 });
 module.exports = client; //END OF DISTUBE
 DistubeEvents(client);
-client.login(your token here); 
+client.login(token); 
