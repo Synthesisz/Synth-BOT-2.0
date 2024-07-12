@@ -16,5 +16,6 @@ Music system with youtube/soundcloud/spotify, commands are self explanatory(play
 2. Click **New Application**
 3. Copy application ID and paste it in the config.json file
 4. Go to Bot>Reset token>Copy token>paste it in config.json
-5. Go to OAuth2>Scopes>select bot, below that go to bot permissions>select administrator>go to the generated url and add the bot to your server
-6. Install nodejs and dependencies>run the bot(code.js main file)
+5. Install nodejs and dependencies>run the bot(code.js main file)
+6. Go to OAuth2>Scopes>select bot, below that go to bot permissions>select administrator>go to the generated url and add the bot to your server
+**IT MIGHT TAKE A WHILE TO REGISTER THE BOT'S COMMANDS**
