@@ -11,7 +11,7 @@ Synth-BOT-2.0 is a remake of the original using the latest discord js and distub
 Music system with youtube/soundcloud/spotify, commands are self explanatory(play,pause,resume,skip,loop,shuffle,autoplay,stop,dc(disconnect))  
 ~~Invite the bot to your server - https://discord.com/api/oauth2/authorize?client_id=914168825111531640&permissions=3156992&scope=bot%20applications.commands~~ Not hosting the bot online any longer
 
-**HOW TO RUN**
+~~**HOW TO RUN**~~ I've stopped support of the bot, you won't be able to run it anymore, or at least not without fixing the errors.
 1. Open discord developer portal
 2. Click **New Application**
 3. Copy application ID and paste it in the config.json file
@@ -19,4 +19,4 @@ Music system with youtube/soundcloud/spotify, commands are self explanatory(play
 5. Install nodejs and dependencies>run the bot(code.js main file)
 6. Go to OAuth2>Scopes>select bot, below that go to bot permissions>select administrator>go to the generated url and add the bot to your server
 
-**IT MIGHT TAKE A WHILE TO REGISTER THE BOT'S COMMANDS**
+**It might take a while to register the bot's commands**
